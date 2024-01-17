@@ -24,7 +24,7 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      console.log("onSuccess calls:", onSuccess.mock.calls);
+
       expect(onSuccess).toHaveBeenCalled();
     });
   });
