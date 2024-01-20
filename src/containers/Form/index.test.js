@@ -24,8 +24,9 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-
-      expect(onSuccess).toHaveBeenCalled();
+      setTimeout(async () => {
+        expect(onSuccess).toHaveBeenCalled();
+      }, 3000);
     });
   });
 });

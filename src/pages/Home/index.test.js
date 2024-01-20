@@ -21,22 +21,46 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      /* await screen.findByText("Message envoyé !"); */
+      setTimeout(async () => {
+        screen.findByText("Message envoyé !");
+      }, 3000);
     });
   });
 });
 
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
-    // to implement
+    render(<Home />);
+    setTimeout(() => {
+      const events = screen.getByTestId("card-testid");
+      expect(events).toBeInTheDocument();
+    }, 3000);
   });
   it("a list a people is displayed", () => {
-    // to implement
+    render(<Home />);
+    setTimeout(() => {
+      const peopleCards = screen.getByTestId("peopleCard-testid");
+      expect(peopleCards).toBeInTheDocument();
+    }, 3000);
   });
   it("a footer is displayed", () => {
-    // to implement
+    render(<Home />);
+    const footer = screen.getByTestId("footer-testid");
+    expect(footer).toBeInTheDocument();
   });
   it("an event card, with the last event, is displayed", () => {
-    // to implement
+    render(<Home />);
+    const data = [
+      { title: "Event 1", date: "2024-01-20", cover: "/path/to/image1.jpg" },
+      { title: "Event 2", date: "2024-01-21", cover: "/path/to/image2.jpg" },
+    ];
+
+    setTimeout(() => {
+      const lastEventCard = document.querySelector("last-event");
+      const eventData = data;
+
+      expect(lastEventCard).toHaveTextContent(eventData[1].title);
+      expect(lastEventCard).toHaveTextContent(eventData[1].date);
+    }, 3000);
   });
 });

@@ -112,11 +112,12 @@ const Page = () => {
           </Modal>
         </div>
       </main>
-      <footer className="row">
+      <footer data-testid="footer-testid" className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {last && (
             <EventCard
+              className="last-event"
               imageSrc={last?.cover}
               title={last?.title}
               date={new Date(last?.date)}
