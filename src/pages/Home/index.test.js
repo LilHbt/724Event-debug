@@ -59,8 +59,8 @@ describe("When a page is created", () => {
       const lastEventCard = document.querySelector("last-event");
       const eventData = data;
 
-      expect(lastEventCard).toHaveTextContent(eventData[1].title);
-      expect(lastEventCard).toHaveTextContent(eventData[1].date);
+      expect(lastEventCard).toHaveTextContent(eventData[data.length - 1].title);
+      expect(lastEventCard).toHaveTextContent(eventData[data.length - 1].date);
     }, 3000);
   });
 });
