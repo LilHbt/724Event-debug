@@ -117,7 +117,6 @@ const Page = () => {
           <h3>Notre derniére prestation</h3>
           {last && (
             <EventCard
-              className="last-event"
               imageSrc={last?.cover}
               title={last?.title}
               date={new Date(last?.date)}
