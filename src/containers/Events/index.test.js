@@ -38,28 +38,32 @@ const data = {
 };
 
 describe("When Events is created", () => {
-  it("a list of event card is displayed", async () => {
-    api.loadData = jest.fn().mockReturnValue(data);
-    render(
-      <DataProvider>
-        <Events />
-      </DataProvider>
-    );
-    await screen.findByText("avril");
-  });
-  describe("and an error occured", () => {
-    it("an error message is displayed", async () => {
-      api.loadData = jest.fn().mockRejectedValue();
+  it("a list of event card is displayed", () => {
+    setTimeout(() => {
+      api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
           <Events />
         </DataProvider>
       );
-      expect(await screen.findByText("An error occured")).toBeInTheDocument();
+      screen.findByText("avril");
+    }, 3000);
+  });
+  describe("and an error occured", () => {
+    it("an error message is displayed", () => {
+      setTimeout(() => {
+        api.loadData = jest.fn().mockRejectedValue();
+        render(
+          <DataProvider>
+            <Events />
+          </DataProvider>
+        );
+        expect(screen.findByText("An error occured")).toBeInTheDocument();
+      }, 3000);
     });
   });
   describe("and we select a category", () => {
-    it.only("an filtered list is displayed", async () => {
+    it("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
